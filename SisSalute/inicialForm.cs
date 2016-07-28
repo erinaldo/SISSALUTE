@@ -32,23 +32,24 @@ namespace SisSalute
         {
 
 
-            // if (_formulario != null)
+            if (Application.OpenForms.OfType<cadastroClientesForm>().Count() > 0)
             {
 
                 MessageBox.Show("Tela já aberta! Selecione outra opção.");
-                _formulario.Close();
+                
             }
-
-            _formulario = new cadastroClientesForm
+            else
             {
-                TopLevel = false,
-                FormBorderStyle = FormBorderStyle.None,
-                Dock = DockStyle.Fill
-            };
+                _formulario = new cadastroClientesForm
+                    {
+                        TopLevel = false,
+                        FormBorderStyle = FormBorderStyle.None,
+                        Dock = DockStyle.Fill
+                    };
 
-            painelPrincipal.Controls.Add(_formulario);
-            _formulario.Show();
-
+                painelPrincipal.Controls.Add(_formulario);
+                _formulario.Show();
+            }
         }
 
         private void menuPrincipalFechar_Click_1(object sender, EventArgs e)
