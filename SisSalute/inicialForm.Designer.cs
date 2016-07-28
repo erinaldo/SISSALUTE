@@ -151,7 +151,8 @@
             // 
             // painelPrincipal
             // 
-            this.painelPrincipal.BackColor = System.Drawing.Color.Red;
+            this.painelPrincipal.BackColor = System.Drawing.Color.Silver;
+            this.painelPrincipal.Cursor = System.Windows.Forms.Cursors.Default;
             this.painelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.painelPrincipal.Location = new System.Drawing.Point(0, 25);
             this.painelPrincipal.Name = "painelPrincipal";
