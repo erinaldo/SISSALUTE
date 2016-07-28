@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f6d6df3fdf4f417cb73e25280194118a" Name="Diagram1" >
+        <EntityTypeShape EntityType="SisSalute_ModeloEntidade.Clientes" Width="1.875" PointX="2.625" PointY="0.5" FillColor="0, 192, 0" IsExpanded="true" />
+        <EntityTypeShape EntityType="SisSalute_ModeloEntidade.Profissionais" Width="1.75" PointX="10.75" PointY="0.5" FillColor="0, 192, 0" />
+        <EntityTypeShape EntityType="SisSalute_ModeloEntidade.Tratamentos" Width="1.75" PointX="7.875" PointY="5.375" />
+        <EntityTypeShape EntityType="SisSalute_ModeloEntidade.Enderecos" Width="1.75" PointX="7.625" PointY="1.125" />
+        <EntityTypeShape EntityType="SisSalute_ModeloEntidade.Insumo" Width="1.75" PointX="10.875" PointY="4" />
+        <EntityTypeShape EntityType="SisSalute_ModeloEntidade.Consulta" Width="1.75" PointX="5.375" PointY="4.5" />
+        <AssociationConnector Association="SisSalute_ModeloEntidade.ClientesEnderecos" />
+        <AssociationConnector Association="SisSalute_ModeloEntidade.ProfissionaisEnderecos" />
+        <AssociationConnector Association="SisSalute_ModeloEntidade.InsumoTratamentos" />
+        <AssociationConnector Association="SisSalute_ModeloEntidade.TratamentosConsulta" />
+        <AssociationConnector Association="SisSalute_ModeloEntidade.ClientesConsulta" />
+        <AssociationConnector Association="SisSalute_ModeloEntidade.ProfissionaisConsulta" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

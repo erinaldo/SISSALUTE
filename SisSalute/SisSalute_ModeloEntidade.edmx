@@ -1,0 +1,554 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SisSalute_ModeloEntidade.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="SisSalute_ModeloEntidadeStoreContainer">
+    <EntitySet Name="Clientes" EntityType="SisSalute_ModeloEntidade.Store.Clientes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Profissionais" EntityType="SisSalute_ModeloEntidade.Store.Profissionais" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tratamentos" EntityType="SisSalute_ModeloEntidade.Store.Tratamentos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Enderecos" EntityType="SisSalute_ModeloEntidade.Store.Enderecos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Insumo" EntityType="SisSalute_ModeloEntidade.Store.Insumo" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Consulta" EntityType="SisSalute_ModeloEntidade.Store.Consulta" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="InsumoTratamentos" EntityType="SisSalute_ModeloEntidade.Store.InsumoTratamentos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProfissionaisConsulta" EntityType="SisSalute_ModeloEntidade.Store.ProfissionaisConsulta" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ClientesEnderecos" Association="SisSalute_ModeloEntidade.Store.ClientesEnderecos">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="Enderecos" EntitySet="Enderecos" />
+    </AssociationSet>
+    <AssociationSet Name="ProfissionaisEnderecos" Association="SisSalute_ModeloEntidade.Store.ProfissionaisEnderecos">
+      <End Role="Profissionais" EntitySet="Profissionais" />
+      <End Role="Enderecos" EntitySet="Enderecos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InsumoTratamentos_Insumo" Association="SisSalute_ModeloEntidade.Store.FK_InsumoTratamentos_Insumo">
+      <End Role="Insumo" EntitySet="Insumo" />
+      <End Role="InsumoTratamentos" EntitySet="InsumoTratamentos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InsumoTratamentos_Tratamentos" Association="SisSalute_ModeloEntidade.Store.FK_InsumoTratamentos_Tratamentos">
+      <End Role="Tratamentos" EntitySet="Tratamentos" />
+      <End Role="InsumoTratamentos" EntitySet="InsumoTratamentos" />
+    </AssociationSet>
+    <AssociationSet Name="TratamentosConsulta" Association="SisSalute_ModeloEntidade.Store.TratamentosConsulta">
+      <End Role="Tratamentos" EntitySet="Tratamentos" />
+      <End Role="Consulta" EntitySet="Consulta" />
+    </AssociationSet>
+    <AssociationSet Name="ClientesConsulta" Association="SisSalute_ModeloEntidade.Store.ClientesConsulta">
+      <End Role="Clientes" EntitySet="Clientes" />
+      <End Role="Consulta" EntitySet="Consulta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfissionaisConsulta_Profissionais" Association="SisSalute_ModeloEntidade.Store.FK_ProfissionaisConsulta_Profissionais">
+      <End Role="Profissionais" EntitySet="Profissionais" />
+      <End Role="ProfissionaisConsulta" EntitySet="ProfissionaisConsulta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfissionaisConsulta_Consulta" Association="SisSalute_ModeloEntidade.Store.FK_ProfissionaisConsulta_Consulta">
+      <End Role="Consulta" EntitySet="Consulta" />
+      <End Role="ProfissionaisConsulta" EntitySet="ProfissionaisConsulta" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Clientes">
+    <Key>
+      <PropertyRef Name="codCliente" />
+    </Key>
+    <Property Name="codCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="cpf" Type="nchar" Nullable="true" MaxLength="11" />
+    <Property Name="numEndereco" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="telefone" Type="nvarchar" Nullable="true" MaxLength="11" />
+    <Property Name="celular2" Type="nvarchar" Nullable="true" MaxLength="11" />
+    <Property Name="celular1" Type="nvarchar" Nullable="true" MaxLength="11" />
+    <Property Name="email" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="facebook" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="profissao" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="estadoCivil" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="dataNascimento" Type="datetime" Nullable="false" />
+    <Property Name="sexo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="dataCadastro" Type="datetime" Nullable="false" />
+    <Property Name="compEndereco" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Enderecos_codEndereco" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Profissionais">
+    <Key>
+      <PropertyRef Name="codProfissional" />
+    </Key>
+    <Property Name="codProfissional" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="especialidade" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="celular" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="telefone" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="email" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="numEndereco" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="compEndereco" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Enderecos_codEndereco" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tratamentos">
+    <Key>
+      <PropertyRef Name="codTratamento" />
+    </Key>
+    <Property Name="codTratamento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="valor" Type="float" Nullable="true" />
+    <Property Name="descricao" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Enderecos">
+    <Key>
+      <PropertyRef Name="codEndereco" />
+    </Key>
+    <Property Name="codEndereco" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="endereco" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="bairro" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="cidade" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="estado" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="cep" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="logradouro" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Insumo">
+    <Key>
+      <PropertyRef Name="codInsumo" />
+    </Key>
+    <Property Name="codInsumo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nome" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="custo" Type="float" Nullable="true" />
+    <Property Name="descricao" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="tipo" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="origem" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Consulta">
+    <Key>
+      <PropertyRef Name="codConsulta" />
+    </Key>
+    <Property Name="codConsulta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="valor" Type="float" Nullable="false" />
+    <Property Name="agenda" Type="datetime" Nullable="false" />
+    <Property Name="status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="sala" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="formaPagamento" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="parcelamento" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="comissao" Type="bit" Nullable="false" />
+    <Property Name="Tratamentos_codTratamento" Type="int" Nullable="false" />
+    <Property Name="Clientes_codCliente" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InsumoTratamentos">
+    <Key>
+      <PropertyRef Name="Insumo_codInsumo" />
+      <PropertyRef Name="Tratamentos_codTratamento" />
+    </Key>
+    <Property Name="Insumo_codInsumo" Type="int" Nullable="false" />
+    <Property Name="Tratamentos_codTratamento" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProfissionaisConsulta">
+    <Key>
+      <PropertyRef Name="Profissionais_codProfissional" />
+      <PropertyRef Name="Consulta_codConsulta" />
+    </Key>
+    <Property Name="Profissionais_codProfissional" Type="int" Nullable="false" />
+    <Property Name="Consulta_codConsulta" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ClientesEnderecos">
+    <End Role="Clientes" Type="SisSalute_ModeloEntidade.Store.Clientes" Multiplicity="*" />
+    <End Role="Enderecos" Type="SisSalute_ModeloEntidade.Store.Enderecos" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Enderecos">
+        <PropertyRef Name="codEndereco" />
+      </Principal>
+      <Dependent Role="Clientes">
+        <PropertyRef Name="Enderecos_codEndereco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProfissionaisEnderecos">
+    <End Role="Profissionais" Type="SisSalute_ModeloEntidade.Store.Profissionais" Multiplicity="*" />
+    <End Role="Enderecos" Type="SisSalute_ModeloEntidade.Store.Enderecos" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Enderecos">
+        <PropertyRef Name="codEndereco" />
+      </Principal>
+      <Dependent Role="Profissionais">
+        <PropertyRef Name="Enderecos_codEndereco" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TratamentosConsulta">
+    <End Role="Tratamentos" Type="SisSalute_ModeloEntidade.Store.Tratamentos" Multiplicity="1" />
+    <End Role="Consulta" Type="SisSalute_ModeloEntidade.Store.Consulta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tratamentos">
+        <PropertyRef Name="codTratamento" />
+      </Principal>
+      <Dependent Role="Consulta">
+        <PropertyRef Name="Tratamentos_codTratamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ClientesConsulta">
+    <End Role="Clientes" Type="SisSalute_ModeloEntidade.Store.Clientes" Multiplicity="1" />
+    <End Role="Consulta" Type="SisSalute_ModeloEntidade.Store.Consulta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clientes">
+        <PropertyRef Name="codCliente" />
+      </Principal>
+      <Dependent Role="Consulta">
+        <PropertyRef Name="Clientes_codCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InsumoTratamentos_Insumo">
+    <End Role="Insumo" Type="SisSalute_ModeloEntidade.Store.Insumo" Multiplicity="1" />
+    <End Role="InsumoTratamentos" Type="SisSalute_ModeloEntidade.Store.InsumoTratamentos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Insumo">
+        <PropertyRef Name="codInsumo" />
+      </Principal>
+      <Dependent Role="InsumoTratamentos">
+        <PropertyRef Name="Insumo_codInsumo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InsumoTratamentos_Tratamentos">
+    <End Role="InsumoTratamentos" Type="SisSalute_ModeloEntidade.Store.InsumoTratamentos" Multiplicity="*" />
+    <End Role="Tratamentos" Type="SisSalute_ModeloEntidade.Store.Tratamentos" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Tratamentos">
+        <PropertyRef Name="codTratamento" />
+      </Principal>
+      <Dependent Role="InsumoTratamentos">
+        <PropertyRef Name="Tratamentos_codTratamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfissionaisConsulta_Profissionais">
+    <End Role="Profissionais" Type="SisSalute_ModeloEntidade.Store.Profissionais" Multiplicity="1" />
+    <End Role="ProfissionaisConsulta" Type="SisSalute_ModeloEntidade.Store.ProfissionaisConsulta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profissionais">
+        <PropertyRef Name="codProfissional" />
+      </Principal>
+      <Dependent Role="ProfissionaisConsulta">
+        <PropertyRef Name="Profissionais_codProfissional" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfissionaisConsulta_Consulta">
+    <End Role="ProfissionaisConsulta" Type="SisSalute_ModeloEntidade.Store.ProfissionaisConsulta" Multiplicity="*" />
+    <End Role="Consulta" Type="SisSalute_ModeloEntidade.Store.Consulta" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Consulta">
+        <PropertyRef Name="codConsulta" />
+      </Principal>
+      <Dependent Role="ProfissionaisConsulta">
+        <PropertyRef Name="Consulta_codConsulta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="SisSalute_ModeloEntidade" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="SisSalute_ModeloEntidadeContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clientes" EntityType="SisSalute_ModeloEntidade.Clientes" />
+          <EntitySet Name="Profissionais" EntityType="SisSalute_ModeloEntidade.Profissionais" />
+          <EntitySet Name="Tratamentos" EntityType="SisSalute_ModeloEntidade.Tratamentos" />
+          <EntitySet Name="Enderecos" EntityType="SisSalute_ModeloEntidade.Enderecos" />
+          <EntitySet Name="Insumo" EntityType="SisSalute_ModeloEntidade.Insumo" />
+          <AssociationSet Name="ClientesEnderecos" Association="SisSalute_ModeloEntidade.ClientesEnderecos">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Enderecos" EntitySet="Enderecos" />
+          </AssociationSet>
+          <AssociationSet Name="ProfissionaisEnderecos" Association="SisSalute_ModeloEntidade.ProfissionaisEnderecos">
+            <End Role="Profissionais" EntitySet="Profissionais" />
+            <End Role="Enderecos" EntitySet="Enderecos" />
+          </AssociationSet>
+          <AssociationSet Name="InsumoTratamentos" Association="SisSalute_ModeloEntidade.InsumoTratamentos">
+            <End Role="Insumo" EntitySet="Insumo" />
+            <End Role="Tratamentos" EntitySet="Tratamentos" />
+          </AssociationSet>
+          <AssociationSet Name="TratamentosConsulta" Association="SisSalute_ModeloEntidade.TratamentosConsulta">
+            <End Role="Tratamentos" EntitySet="Tratamentos" />
+            <End Role="Consulta" EntitySet="Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="ClientesConsulta" Association="SisSalute_ModeloEntidade.ClientesConsulta">
+            <End Role="Clientes" EntitySet="Clientes" />
+            <End Role="Consulta" EntitySet="Consulta" />
+          </AssociationSet>
+          <AssociationSet Name="ProfissionaisConsulta" Association="SisSalute_ModeloEntidade.ProfissionaisConsulta">
+            <End Role="Profissionais" EntitySet="Profissionais" />
+            <End Role="Consulta" EntitySet="Consulta" />
+          </AssociationSet>
+          <EntitySet Name="Consulta" EntityType="SisSalute_ModeloEntidade.Consulta" />
+        </EntityContainer>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="codCliente" />
+          </Key>
+          <Property Name="codCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" Nullable="false" />
+          <Property Name="cpf" Type="String" Nullable="true" MaxLength="11" FixedLength="true" />
+          <Property Name="numEndereco" Type="String" Nullable="true" />
+          <Property Name="telefone" Type="String" Nullable="true" MaxLength="11" FixedLength="false" />
+          <Property Name="celular2" Type="String" Nullable="true" MaxLength="11" FixedLength="false" />
+          <Property Name="celular1" Type="String" Nullable="true" MaxLength="11" FixedLength="false" />
+          <Property Name="email" Type="String" Nullable="true" />
+          <Property Name="facebook" Type="String" Nullable="true" />
+          <Property Name="profissao" Type="String" Nullable="true" />
+          <Property Name="estadoCivil" Type="String" Nullable="false" />
+          <Property Name="dataNascimento" Type="DateTime" Nullable="false" />
+          <Property Name="sexo" Type="String" Nullable="false" />
+          <Property Name="dataCadastro" Type="DateTime" Nullable="false" />
+          <Property Name="compEndereco" Type="String" Nullable="true" />
+          <NavigationProperty Name="Enderecos" Relationship="SisSalute_ModeloEntidade.ClientesEnderecos" FromRole="Clientes" ToRole="Enderecos" />
+          <NavigationProperty Name="Consulta" Relationship="SisSalute_ModeloEntidade.ClientesConsulta" FromRole="Clientes" ToRole="Consulta" />
+        </EntityType>
+        <EntityType Name="Profissionais">
+          <Key>
+            <PropertyRef Name="codProfissional" />
+          </Key>
+          <Property Name="codProfissional" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" Nullable="false" />
+          <Property Name="especialidade" Type="String" Nullable="false" />
+          <Property Name="celular" Type="String" Nullable="false" />
+          <Property Name="telefone" Type="String" Nullable="true" />
+          <Property Name="email" Type="String" Nullable="true" />
+          <Property Name="numEndereco" Type="String" Nullable="true" />
+          <Property Name="compEndereco" Type="String" Nullable="true" />
+          <NavigationProperty Name="Enderecos" Relationship="SisSalute_ModeloEntidade.ProfissionaisEnderecos" FromRole="Profissionais" ToRole="Enderecos" />
+          <NavigationProperty Name="Consulta" Relationship="SisSalute_ModeloEntidade.ProfissionaisConsulta" FromRole="Profissionais" ToRole="Consulta" />
+        </EntityType>
+        <EntityType Name="Tratamentos">
+          <Key>
+            <PropertyRef Name="codTratamento" />
+          </Key>
+          <Property Name="codTratamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" Nullable="false" />
+          <Property Name="valor" Type="Double" Nullable="true" />
+          <Property Name="descricao" Type="String" Nullable="true" />
+          <NavigationProperty Name="Insumo" Relationship="SisSalute_ModeloEntidade.InsumoTratamentos" FromRole="Tratamentos" ToRole="Insumo" />
+          <NavigationProperty Name="Consulta" Relationship="SisSalute_ModeloEntidade.TratamentosConsulta" FromRole="Tratamentos" ToRole="Consulta" />
+        </EntityType>
+        <EntityType Name="Enderecos">
+          <Key>
+            <PropertyRef Name="codEndereco" />
+          </Key>
+          <Property Name="codEndereco" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="endereco" Type="String" Nullable="true" />
+          <Property Name="bairro" Type="String" Nullable="true" />
+          <Property Name="cidade" Type="String" Nullable="true" />
+          <Property Name="estado" Type="String" Nullable="true" />
+          <Property Name="cep" Type="String" Nullable="true" />
+          <Property Name="logradouro" Type="String" Nullable="true" />
+          <NavigationProperty Name="Clientes" Relationship="SisSalute_ModeloEntidade.ClientesEnderecos" FromRole="Enderecos" ToRole="Clientes" />
+          <NavigationProperty Name="Profissionais" Relationship="SisSalute_ModeloEntidade.ProfissionaisEnderecos" FromRole="Enderecos" ToRole="Profissionais" />
+        </EntityType>
+        <EntityType Name="Insumo">
+          <Key>
+            <PropertyRef Name="codInsumo" />
+          </Key>
+          <Property Name="codInsumo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nome" Type="String" Nullable="false" />
+          <Property Name="custo" Type="Double" Nullable="true" />
+          <Property Name="descricao" Type="String" Nullable="true" />
+          <Property Name="tipo" Type="String" Nullable="true" />
+          <Property Name="origem" Type="String" Nullable="true" />
+          <NavigationProperty Name="Tratamentos" Relationship="SisSalute_ModeloEntidade.InsumoTratamentos" FromRole="Insumo" ToRole="Tratamentos" />
+        </EntityType>
+        <EntityType Name="Consulta">
+          <Key>
+            <PropertyRef Name="codConsulta" />
+          </Key>
+          <Property Name="codConsulta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="valor" Type="Double" Nullable="false" />
+          <Property Name="agenda" Type="DateTime" Nullable="false" />
+          <Property Name="status" Type="String" Nullable="false" />
+          <Property Name="sala" Type="String" Nullable="true" />
+          <Property Name="formaPagamento" Type="String" Nullable="false" />
+          <Property Name="parcelamento" Type="String" Nullable="true" />
+          <NavigationProperty Name="Tratamentos" Relationship="SisSalute_ModeloEntidade.TratamentosConsulta" FromRole="Consulta" ToRole="Tratamentos" />
+          <NavigationProperty Name="Clientes" Relationship="SisSalute_ModeloEntidade.ClientesConsulta" FromRole="Consulta" ToRole="Clientes" />
+          <NavigationProperty Name="Profissionais" Relationship="SisSalute_ModeloEntidade.ProfissionaisConsulta" FromRole="Consulta" ToRole="Profissionais" />
+          <Property Name="comissao" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="ClientesEnderecos">
+          <End Type="SisSalute_ModeloEntidade.Clientes" Role="Clientes" Multiplicity="*" />
+          <End Type="SisSalute_ModeloEntidade.Enderecos" Role="Enderecos" Multiplicity="1" />
+        </Association>
+        <Association Name="ProfissionaisEnderecos">
+          <End Type="SisSalute_ModeloEntidade.Profissionais" Role="Profissionais" Multiplicity="*" />
+          <End Type="SisSalute_ModeloEntidade.Enderecos" Role="Enderecos" Multiplicity="1" />
+        </Association>
+        <Association Name="InsumoTratamentos">
+          <End Type="SisSalute_ModeloEntidade.Insumo" Role="Insumo" Multiplicity="*" />
+          <End Type="SisSalute_ModeloEntidade.Tratamentos" Role="Tratamentos" Multiplicity="*" />
+        </Association>
+        <Association Name="TratamentosConsulta">
+          <End Type="SisSalute_ModeloEntidade.Tratamentos" Role="Tratamentos" Multiplicity="1" />
+          <End Type="SisSalute_ModeloEntidade.Consulta" Role="Consulta" Multiplicity="*" />
+        </Association>
+        <Association Name="ClientesConsulta">
+          <End Type="SisSalute_ModeloEntidade.Clientes" Role="Clientes" Multiplicity="1" />
+          <End Type="SisSalute_ModeloEntidade.Consulta" Role="Consulta" Multiplicity="*" />
+        </Association>
+        <Association Name="ProfissionaisConsulta">
+          <End Type="SisSalute_ModeloEntidade.Profissionais" Role="Profissionais" Multiplicity="*" />
+          <End Type="SisSalute_ModeloEntidade.Consulta" Role="Consulta" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SisSalute_ModeloEntidadeStoreContainer" CdmEntityContainer="SisSalute_ModeloEntidadeContainer">
+    <EntitySetMapping Name="Clientes">
+      <EntityTypeMapping TypeName="IsTypeOf(SisSalute_ModeloEntidade.Clientes)">
+        <MappingFragment StoreEntitySet="Clientes">
+          <ScalarProperty Name="codCliente" ColumnName="codCliente" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="cpf" ColumnName="cpf" />
+          <ScalarProperty Name="numEndereco" ColumnName="numEndereco" />
+          <ScalarProperty Name="telefone" ColumnName="telefone" />
+          <ScalarProperty Name="celular2" ColumnName="celular2" />
+          <ScalarProperty Name="celular1" ColumnName="celular1" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="facebook" ColumnName="facebook" />
+          <ScalarProperty Name="profissao" ColumnName="profissao" />
+          <ScalarProperty Name="estadoCivil" ColumnName="estadoCivil" />
+          <ScalarProperty Name="dataNascimento" ColumnName="dataNascimento" />
+          <ScalarProperty Name="sexo" ColumnName="sexo" />
+          <ScalarProperty Name="dataCadastro" ColumnName="dataCadastro" />
+          <ScalarProperty Name="compEndereco" ColumnName="compEndereco" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Profissionais">
+      <EntityTypeMapping TypeName="IsTypeOf(SisSalute_ModeloEntidade.Profissionais)">
+        <MappingFragment StoreEntitySet="Profissionais">
+          <ScalarProperty Name="codProfissional" ColumnName="codProfissional" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="especialidade" ColumnName="especialidade" />
+          <ScalarProperty Name="celular" ColumnName="celular" />
+          <ScalarProperty Name="telefone" ColumnName="telefone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="numEndereco" ColumnName="numEndereco" />
+          <ScalarProperty Name="compEndereco" ColumnName="compEndereco" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tratamentos">
+      <EntityTypeMapping TypeName="IsTypeOf(SisSalute_ModeloEntidade.Tratamentos)">
+        <MappingFragment StoreEntitySet="Tratamentos">
+          <ScalarProperty Name="codTratamento" ColumnName="codTratamento" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Enderecos">
+      <EntityTypeMapping TypeName="IsTypeOf(SisSalute_ModeloEntidade.Enderecos)">
+        <MappingFragment StoreEntitySet="Enderecos">
+          <ScalarProperty Name="codEndereco" ColumnName="codEndereco" />
+          <ScalarProperty Name="endereco" ColumnName="endereco" />
+          <ScalarProperty Name="bairro" ColumnName="bairro" />
+          <ScalarProperty Name="cidade" ColumnName="cidade" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="cep" ColumnName="cep" />
+          <ScalarProperty Name="logradouro" ColumnName="logradouro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Insumo">
+      <EntityTypeMapping TypeName="IsTypeOf(SisSalute_ModeloEntidade.Insumo)">
+        <MappingFragment StoreEntitySet="Insumo">
+          <ScalarProperty Name="codInsumo" ColumnName="codInsumo" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="custo" ColumnName="custo" />
+          <ScalarProperty Name="descricao" ColumnName="descricao" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="origem" ColumnName="origem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Consulta">
+      <EntityTypeMapping TypeName="IsTypeOf(SisSalute_ModeloEntidade.Consulta)">
+        <MappingFragment StoreEntitySet="Consulta">
+          <ScalarProperty Name="codConsulta" ColumnName="codConsulta" />
+          <ScalarProperty Name="valor" ColumnName="valor" />
+          <ScalarProperty Name="agenda" ColumnName="agenda" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="sala" ColumnName="sala" />
+          <ScalarProperty Name="formaPagamento" ColumnName="formaPagamento" />
+          <ScalarProperty Name="parcelamento" ColumnName="parcelamento" />
+          <ScalarProperty Name="comissao" ColumnName="comissao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ClientesEnderecos" TypeName="SisSalute_ModeloEntidade.ClientesEnderecos" StoreEntitySet="Clientes">
+      <EndProperty Name="Enderecos">
+        <ScalarProperty Name="codEndereco" ColumnName="Enderecos_codEndereco" />
+      </EndProperty>
+      <EndProperty Name="Clientes">
+        <ScalarProperty Name="codCliente" ColumnName="codCliente" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProfissionaisEnderecos" TypeName="SisSalute_ModeloEntidade.ProfissionaisEnderecos" StoreEntitySet="Profissionais">
+      <EndProperty Name="Enderecos">
+        <ScalarProperty Name="codEndereco" ColumnName="Enderecos_codEndereco" />
+      </EndProperty>
+      <EndProperty Name="Profissionais">
+        <ScalarProperty Name="codProfissional" ColumnName="codProfissional" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="InsumoTratamentos" TypeName="SisSalute_ModeloEntidade.InsumoTratamentos" StoreEntitySet="InsumoTratamentos">
+      <EndProperty Name="Insumo">
+        <ScalarProperty Name="codInsumo" ColumnName="Insumo_codInsumo" />
+      </EndProperty>
+      <EndProperty Name="Tratamentos">
+        <ScalarProperty Name="codTratamento" ColumnName="Tratamentos_codTratamento" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TratamentosConsulta" TypeName="SisSalute_ModeloEntidade.TratamentosConsulta" StoreEntitySet="Consulta">
+      <EndProperty Name="Tratamentos">
+        <ScalarProperty Name="codTratamento" ColumnName="Tratamentos_codTratamento" />
+      </EndProperty>
+      <EndProperty Name="Consulta">
+        <ScalarProperty Name="codConsulta" ColumnName="codConsulta" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ClientesConsulta" TypeName="SisSalute_ModeloEntidade.ClientesConsulta" StoreEntitySet="Consulta">
+      <EndProperty Name="Clientes">
+        <ScalarProperty Name="codCliente" ColumnName="Clientes_codCliente" />
+      </EndProperty>
+      <EndProperty Name="Consulta">
+        <ScalarProperty Name="codConsulta" ColumnName="codConsulta" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ProfissionaisConsulta" TypeName="SisSalute_ModeloEntidade.ProfissionaisConsulta" StoreEntitySet="ProfissionaisConsulta">
+      <EndProperty Name="Profissionais">
+        <ScalarProperty Name="codProfissional" ColumnName="Profissionais_codProfissional" />
+      </EndProperty>
+      <EndProperty Name="Consulta">
+        <ScalarProperty Name="codConsulta" ColumnName="Consulta_codConsulta" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
