@@ -127,20 +127,20 @@
             // menuPrincipalCadastroClientes
             // 
             this.menuPrincipalCadastroClientes.Name = "menuPrincipalCadastroClientes";
-            this.menuPrincipalCadastroClientes.Size = new System.Drawing.Size(141, 22);
+            this.menuPrincipalCadastroClientes.Size = new System.Drawing.Size(140, 22);
             this.menuPrincipalCadastroClientes.Text = "Clientes";
             this.menuPrincipalCadastroClientes.Click += new System.EventHandler(this.menuPrincipalCadastroClientes_Click_1);
             // 
             // menuPrincipalCadastroProfissionais
             // 
             this.menuPrincipalCadastroProfissionais.Name = "menuPrincipalCadastroProfissionais";
-            this.menuPrincipalCadastroProfissionais.Size = new System.Drawing.Size(141, 22);
+            this.menuPrincipalCadastroProfissionais.Size = new System.Drawing.Size(140, 22);
             this.menuPrincipalCadastroProfissionais.Text = "Profissionais";
             // 
             // menuPrincipalCadastroTratamentos
             // 
             this.menuPrincipalCadastroTratamentos.Name = "menuPrincipalCadastroTratamentos";
-            this.menuPrincipalCadastroTratamentos.Size = new System.Drawing.Size(141, 22);
+            this.menuPrincipalCadastroTratamentos.Size = new System.Drawing.Size(140, 22);
             this.menuPrincipalCadastroTratamentos.Text = "Tratamentos";
             // 
             // menuPrincipalSobre
@@ -155,7 +155,7 @@
             this.painelPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.painelPrincipal.Location = new System.Drawing.Point(0, 25);
             this.painelPrincipal.Name = "painelPrincipal";
-            this.painelPrincipal.Size = new System.Drawing.Size(1008, 705);
+            this.painelPrincipal.Size = new System.Drawing.Size(1008, 704);
             this.painelPrincipal.TabIndex = 1;
             this.painelPrincipal.Paint += new System.Windows.Forms.PaintEventHandler(this.painelPrincipal_Paint);
             // 
@@ -163,11 +163,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 730);
+            this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.painelPrincipal);
             this.Controls.Add(this.painelMenuPrincipal);
             this.MaximumSize = new System.Drawing.Size(1024, 768);
-            this.MinimumSize = new System.Drawing.Size(1024, 768);
+            this.MinimumSize = new System.Drawing.Size(1024, 726);
             this.Name = "inicialForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
