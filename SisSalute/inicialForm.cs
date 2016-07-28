@@ -35,7 +35,7 @@ namespace SisSalute
             if (Application.OpenForms.OfType<cadastroClientesForm>().Count() > 0)
             {
 
-                MessageBox.Show("Tela já aberta! Selecione outra opção.");
+                MessageBox.Show("Tela já aberta! Selecione outra opção...");
                 
             }
             else
